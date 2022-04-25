@@ -210,6 +210,16 @@ interface PassInterface extends ArrayableInterface
     /**
      * {@inheritdoc}
      */
+    public function setSharingProhibited($sharingProhibited);
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getSharingProhibited();
+
+    /**
+     * {@inheritdoc}
+     */
     public function setSuppressStripShine($suppressStripShine);
 
     /**

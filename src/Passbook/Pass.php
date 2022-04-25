@@ -237,6 +237,15 @@ class Pass implements PassInterface
      */
     protected $appLaunchURL;
 
+    /**
+     *
+     * Flag to decide if the pass can be shared or not.
+     *
+     * @var bool
+     *
+     */
+    protected $sharingProhibited = false;
+
     public function __construct($serialNumber, $description)
     {
         // Required
@@ -277,6 +286,7 @@ class Pass implements PassInterface
             'voided',
             'appLaunchURL',
             'associatedStoreIdentifiers',
+            'sharingProhibited',
         );
         foreach ($properties as $property) {
             $method = 'is' . ucfirst($property);
@@ -802,5 +812,17 @@ class Pass implements PassInterface
     public function getAppLaunchURL()
     {
         return $this->appLaunchURL;
+    }
+
+    public function setSharingProhibited($value)
+    {
+        $this->sharingProhibited = $value;
+
+        return $this;
+    }
+
+    public function getSharingProhibited()
+    {
+        return $this->sharingProhibited;
     }
 }
