@@ -491,8 +491,12 @@ class PassFactory
             } else if ($image->getDensity() === 3) {
                 $fileName .= '@3x';
             }
-            $fileName .= '.' . $image->getExtension();
-            copy($image->getPathname(), $fileName);
+            if ($image->getExtension()) {
+                $fileName .= '.' . $image->getExtension();
+            } else {
+                $fileName .= '.png';
+            }
+            file_put_contents($fileName, file_get_contents($image->getOriginalFilename()));
         }
     }
 

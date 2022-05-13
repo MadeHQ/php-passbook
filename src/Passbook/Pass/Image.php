@@ -40,12 +40,15 @@ class Image extends \SplFileObject implements ImageInterface
      */
     protected $density;
 
+    protected $original_filename;
+
     public function __construct($filename, $context)
     {
         // Call parent
         parent::__construct($filename);
         // Pass image context
         $this->setContext($context);
+        $this->original_filename = $filename;
     }
 
     /**
@@ -82,5 +85,13 @@ class Image extends \SplFileObject implements ImageInterface
     public function getDensity()
     {
         return $this->density;
+    }
+
+    /**
+     * @return string
+     */
+    public function getOriginalFilename()
+    {
+        return $this->original_filename;
     }
 }

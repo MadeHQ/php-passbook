@@ -57,7 +57,7 @@ class PassValidator implements PassValidatorInterface
         $this->validateBarcodeKeys($pass);
         $this->validateWebServiceKeys($pass);
         $this->validateIcon($pass);
-        $this->validateImageType($pass);
+        //$this->validateImageType($pass);
         $this->validateAssociatedStoreIdentifiers($pass);
 
         return count($this->errors) === 0;
@@ -216,7 +216,7 @@ class PassValidator implements PassValidatorInterface
             }
         }
     }
-    
+
     private function validateAssociatedStoreIdentifiers(PassInterface $pass)
     {
         //appLaunchURL
