@@ -109,11 +109,33 @@ class Field implements FieldInterface
      */
     protected $attributedValue;
 
+    /**
+     * Row ID for Aux fields
+     * @var int|null
+     */
+    protected $row = null;
+
     public function __construct($key, $value)
     {
         // Required
         $this->setKey($key);
         $this->setValue($value);
+    }
+
+    /**
+     * @param int $row
+     */
+    public function setRow($row)
+    {
+        $this->row = $row;
+    }
+
+    /**
+     * @return int
+     */
+    public function getRow()
+    {
+        return $this->row;
     }
 
     public function toArray()
@@ -141,6 +163,10 @@ class Field implements FieldInterface
 
         if ($this->getAttributedValue()) {
             $array['attributedValue'] = $this->getAttributedValue();
+        }
+
+        if ($this->getRow() !== null) {
+            $array['row'] = $this->getRow();
         }
 
         return $array;
