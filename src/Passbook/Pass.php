@@ -155,6 +155,15 @@ class Pass implements PassInterface
     protected $foregroundColor;
 
     /**
+     * Identifier used to group related passes.
+     * If a grouping identifier is specified, passes with the same style, pass type identifier,
+     * and grouping identifier are displayed as a group. Otherwise, passes are grouped automatically.
+     *
+     * @var string
+     */
+    protected $groupingIdentifier;
+
+    /**
      * Color of the label text, specified as a CSS-style RGB triple.
      *
      * @var string rgb(255, 255, 255)
@@ -274,6 +283,7 @@ class Pass implements PassInterface
             'barcodes',
             'backgroundColor',
             'foregroundColor',
+            'groupingIdentifier',
             'labelColor',
             'logoText',
             'suppressStripShine',
@@ -614,6 +624,24 @@ class Pass implements PassInterface
     public function getForegroundColor()
     {
         return $this->foregroundColor;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setGroupingIdentifier($groupingIdentifier)
+    {
+        $this->groupingIdentifier = $groupingIdentifier;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getGroupingIdentifier()
+    {
+        return $this->groupingIdentifier;
     }
 
     /**
